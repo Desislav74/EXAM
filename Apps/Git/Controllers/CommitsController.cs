@@ -20,6 +20,7 @@ namespace Git.Controllers
         [HttpPost]
         public HttpResponse Create(string description, string id)
         {
+
             if (!this.IsUserSignedIn())
             {
                 return this.Redirect("/Users/Login");

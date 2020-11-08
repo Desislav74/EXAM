@@ -16,6 +16,11 @@ namespace Git.Controllers
         }
         public HttpResponse Create()
         {
+
+            if (!this.IsUserSignedIn())
+            {
+                return this.Redirect("/Users/Login");
+            }
             return this.View();
         }
 
@@ -23,7 +28,10 @@ namespace Git.Controllers
         public HttpResponse Create(string name,string repositoryType)
 
         {
-
+            if (!this.IsUserSignedIn())
+            {
+                return this.Redirect("/Users/Login");
+            }
             this.repositoriesService.Create(name, repositoryType);
             return this.Redirect("/Repositories/All");
         }
